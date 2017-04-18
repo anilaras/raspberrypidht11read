@@ -2,6 +2,7 @@
 DHT11 sensors read in c
 
 Compile:
+
 gcc -std=c99 termdht.c -o termdht -lwiringPi
 
 Using:
