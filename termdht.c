@@ -75,41 +75,45 @@ void read_dht11_dat(char hortctr)
  
 int main( int argc, char **argv )
 {
+ 
 
 	if ( wiringPiSetup() == -1 )
 		exit( 1 );
   
   if (argc < 2) // no arguments were passed
     {
-    	while ( 1 )
-    	{
-                read_dht11_dat(0);
-                delay( 1000 ); 
-        }
-    }
-    if (strcmp("all", argv[1]) == 0)
-    {
-        while ( 1 )
+                        while ( 1 )
         {
                 read_dht11_dat(0);
                 delay( 1000 ); 
         }
     }
-    else if (strcmp("temp", argv[1]) == 0)
+
+    if (strcmp("-all", argv[1]) == 0 || strcmp("-a", argv[1]) == 0)
     {
-        while ( 1 )
+              while ( 1 )
+        {
+                read_dht11_dat(0);
+                delay( 1000 ); 
+        }
+    }
+    else if (strcmp("-temp", argv[1]) == 0 || strcmp("-t", argv[1]) == 0)
+    {
+            while ( 1 )
         {
                 read_dht11_dat(1);
                 delay( 1000 ); 
         }
     }
-    else if (strcmp("humidity", argv[1]) == 0)
+    else if (strcmp("-humidity", argv[1]) == 0|| strcmp("-h", argv[1]) == 0)
     {
-    	while ( 1 )
+    	        while ( 1 )
         {
                 read_dht11_dat(2);
                 delay( 1000 ); 
         }
     }
+
 	return(0);
 }
+
